@@ -30,7 +30,7 @@
     
 # ACTIONS  
 
-## * Admin Page
+## * Login Page
  <img width="537" height="368" alt="Image" src="https://github.com/user-attachments/assets/6f20e644-017a-4b09-827b-02404e9588a9" />
  
 ## * Home Page
