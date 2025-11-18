@@ -1,0 +1,110 @@
+package gui;
+
+import Data.FileIO;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+public class Menu extends JFrame {
+
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+
+    /**
+     * Create the frame.
+     */
+    public Menu() {
+        setTitle("Banking System");
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setBounds(100, 100, 649, 474);
+        contentPane = new JPanel();
+        contentPane.setBackground(SystemColor.activeCaption);
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblBankingSystem = new JLabel("Banking System");
+        lblBankingSystem.setHorizontalAlignment(SwingConstants.CENTER);
+        lblBankingSystem.setFont(new Font("Tahoma", Font.BOLD, 24));
+        lblBankingSystem.setBounds(0, 69, 613, 59);
+        contentPane.add(lblBankingSystem);
+
+        // Load data
+        FileIO.Read();
+
+        // ADD ACCOUNT button
+        JButton btnAddAccount = new JButton("Add Account");
+        btnAddAccount.addActionListener((ActionEvent e) -> {
+            if (!GUIForm.addaccount.isVisible()) {
+                GUIForm.addaccount.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(getComponent(0), "Already Opened", "Warning", 0);
+            }
+        });
+        btnAddAccount.setBounds(217, 166, 194, 36);
+        contentPane.add(btnAddAccount);
+
+        // DEPOSIT button
+        JButton btnDepositToAccount = new JButton("Deposit To Account");
+        btnDepositToAccount.addActionListener((ActionEvent e) -> {
+            if (!GUIForm.depositacc.isVisible()) {
+                GUIForm.depositacc.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(getComponent(0), "Already Opened", "Warning", 0);
+            }
+        });
+        btnDepositToAccount.setBounds(217, 213, 194, 33);
+        contentPane.add(btnDepositToAccount);
+
+        // WITHDRAW button
+        JButton btnWithdrawFromAccount = new JButton("Withdraw From Account");
+        btnWithdrawFromAccount.addActionListener((ActionEvent e) -> {
+            if (!GUIForm.withdraw.isVisible()) {
+                GUIForm.withdraw.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(getComponent(0), "Already Opened", "Warning", 0);
+            }
+        });
+        btnWithdrawFromAccount.setBounds(217, 256, 194, 33);
+        contentPane.add(btnWithdrawFromAccount);
+
+        // DISPLAY ACCOUNT LIST button (REFRESH INCLUDED)
+        JButton btnDisplayAccountList = new JButton("Display Account List");
+        btnDisplayAccountList.addActionListener((ActionEvent e) -> {
+
+            // 🔥 Refresh the list every time before showing window
+            GUIForm.displaylist.refreshList();
+
+            if (!GUIForm.displaylist.isVisible()) {
+                GUIForm.displaylist.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(getComponent(0), "Already Opened", "Warning", 0);
+            }
+        });
+        btnDisplayAccountList.setBounds(217, 300, 194, 32);
+        contentPane.add(btnDisplayAccountList);
+
+        // EXIT button
+        JButton btnExit = new JButton("Exit");
+        btnExit.addActionListener((ActionEvent arg0) -> {
+            JOptionPane.showMessageDialog(getComponent(0), "Thanks For Using");
+            FileIO.Write();   // Save file
+            System.exit(0);
+        });
+        btnExit.setBounds(217, 343, 194, 33);
+        contentPane.add(btnExit);
+
+        // IMAGE (your original)
+        JLabel lblNewLabel = new JLabel("");
+        lblNewLabel.setIcon(new javax.swing.ImageIcon(Menu.class.getResource("/img/1.png")));
+        lblNewLabel.setBounds(397, 166, 216, 213);
+        contentPane.add(lblNewLabel);
+    }
+}
