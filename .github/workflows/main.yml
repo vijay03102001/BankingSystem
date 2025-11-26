@@ -25,8 +25,8 @@ jobs:
         with:
           args: "--skip-sorting-imports --replace src/**/*.java"
 
-      # - name: Commit and Push Changes
-      #   uses: stefanzweifel/git-auto-commit-action@v5
-      #   with:
-      #     commit_message: "Auto-format Java code"
-      #     branch: main
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-format Java code"
+          branch: main
