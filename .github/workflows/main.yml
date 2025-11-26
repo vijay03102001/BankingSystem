@@ -1,20 +1,17 @@
-name: Java Linting
+name: Format
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
-  lint:
+
+  formatting:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Java
-        uses: actions/setup-java@v3
+      - uses: actions/checkout@v4 # v2 minimum required
+      - uses: axel-op/googlejavaformat-action@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Check Google Java Format
-        uses: axel-op/googlejavaformat-action@v3
-        with:
-          args: --check # Use --check to only verify, without modifying files
+          args: "--skip-sorting-imports --replace"
+          # Recommended if you use MacOS:
+          # github-token: ${{ secrets.GITHUB_TOKEN }}
