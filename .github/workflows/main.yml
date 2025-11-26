@@ -13,7 +13,7 @@ jobs:
       - uses: axel-op/googlejavaformat-action@v4
         with:
           distribution: 'temurin'
-          java-version: '17' # Or '21'
+          java-version: '21'
           args: "--skip-sorting-imports --replace"
           # Recommended if you use MacOS:
           # github-token: ${{ secrets.GITHUB_TOKEN }}
