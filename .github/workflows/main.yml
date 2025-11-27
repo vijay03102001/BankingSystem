@@ -23,7 +23,8 @@ jobs:
       - name: Run Google Java Format
         uses: axel-op/googlejavaformat-action@v4
         with:
-          args: "--skip-sorting-imports --replace src/**/*.java"
+          files: "src/**/*.java"
+          skip-sorting-imports: true
 
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
