@@ -23,7 +23,7 @@ jobs:
       - name: Run Google Java Format
         uses: axel-op/googlejavaformat-action@v4
         with:
-          files: "src/**/*.java"
+          files: BankingSystem/src/**/*.java
           skip-sorting-imports: true
 
       - name: Commit and Push Changes
